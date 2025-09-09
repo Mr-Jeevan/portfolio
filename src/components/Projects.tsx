@@ -3,6 +3,9 @@ import { ExternalLink, Github, Filter } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import sms_prj from '../assets/sms_prj.png';
+
+
 const Projects: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [filter, setFilter] = useState('All');
@@ -11,7 +14,16 @@ const Projects: React.FC = () => {
     {
       title: 'Student Details Management System',
       description: 'A web-based student management system for MCA staff to organize, edit, and export second-year student records with ease',
-      tech: ['React', 'Node.js', 'MongoDB', 'jwt'],
+      tech: ['React', 'Node.js', 'MongoDB', 'JWT'],
+      category: 'Web',
+      image: sms_prj,
+      github: 'https://github.com/Mr-Jeevan/McaSms.git',
+      demo: 'https://mcasms-frontend.onrender.com/McaTwo'
+    },
+    {
+      title: 'E-Commerce Platform',
+      description: 'Full-stack e-commerce solution with React, Node.js, and MongoDB. Features include user authentication, payment integration, and admin dashboard.',
+      tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
       category: 'Web',
       image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
       github: '#',
@@ -57,15 +69,15 @@ const Projects: React.FC = () => {
 
   const categories = ['All', 'Web', 'API', 'Creative'];
 
-  const filteredProjects = filter === 'All' 
-    ? projects 
+  const filteredProjects = filter === 'All'
+    ? projects
     : projects.filter(project => project.category === filter);
 
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
 
-    gsap.fromTo(section.querySelector('.section-title'), 
+    gsap.fromTo(section.querySelector('.section-title'),
       { y: 50, opacity: 0 },
       {
         y: 0,
@@ -78,7 +90,7 @@ const Projects: React.FC = () => {
       }
     );
 
-    gsap.fromTo(section.querySelectorAll('.project-card'), 
+    gsap.fromTo(section.querySelectorAll('.project-card'),
       { y: 100, opacity: 0 },
       {
         y: 0,
@@ -112,11 +124,10 @@ const Projects: React.FC = () => {
               <button
                 key={category}
                 onClick={() => setFilter(category)}
-                className={`px-6 py-2 rounded-full transition-all duration-300 ${
-                  filter === category
-                    ? 'bg-blue-500 text-white'
-                    : 'bg-gray-800/70 text-gray-300 hover:bg-gray-700 border border-gray-600'
-                }`}
+                className={`px-6 py-2 rounded-full transition-all duration-300 ${filter === category
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-gray-800/70 text-gray-300 hover:bg-gray-700 border border-gray-600'
+                  }`}
               >
                 {category}
               </button>
