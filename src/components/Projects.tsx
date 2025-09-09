@@ -9,9 +9,9 @@ const Projects: React.FC = () => {
 
   const projects = [
     {
-      title: 'E-Commerce Platform',
-      description: 'Full-stack e-commerce solution with React, Node.js, and MongoDB. Features include user authentication, payment integration, and admin dashboard.',
-      tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+      title: 'Student Details Management System',
+      description: 'A web-based student management system for MCA staff to organize, edit, and export second-year student records with ease',
+      tech: ['React', 'Node.js', 'MongoDB', 'jwt'],
       category: 'Web',
       image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
       github: '#',
