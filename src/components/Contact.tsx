@@ -1,16 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Send, Mail, Phone, MapPin, Github, Linkedin, Twitter } from 'lucide-react';
 import gsap from 'gsap';
+import emailjs from '@emailjs/browser';
 // import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const Contact: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusMessage, setStatusMessage] = useState('');
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -32,16 +35,31 @@ const Contact: React.FC = () => {
     );
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formRef.current) return;
+
     setIsSubmitting(true);
+    setStatusMessage('');
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-
-    alert('Message sent successfully! I\'ll get back to you soon.');
-    setFormData({ name: '', email: '', message: '' });
-    setIsSubmitting(false);
+    emailjs.sendForm(
+      process.env.REACT_APP_EMAILJS_SERVICE_ID!,
+      process.env.REACT_APP_EMAILJS_TEMPLATE_ID!,
+      formRef.current,
+      process.env.REACT_APP_EMAILJS_PUBLIC_KEY!
+    )
+      .then((result) => {
+        console.log(result.text);
+        setStatusMessage('Message sent successfully!');
+        setFormData({ name: '', email: '', message: '' });
+      }, (error) => {
+        console.log(error.text);
+        setStatusMessage('Failed to send message. Please try again.');
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+        setTimeout(() => setStatusMessage(''), 5000); // Clear message after 5 seconds
+      });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -126,7 +144,7 @@ const Contact: React.FC = () => {
 
           {/* Contact Form */}
           <div className="contact-item">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
                   Your Name
@@ -189,6 +207,11 @@ const Contact: React.FC = () => {
                   </>
                 )}
               </button>
+              {statusMessage && (
+                <p className={`text-center mt-4 ${statusMessage.includes('Failed') ? 'text-red-400' : 'text-green-400'}`}>
+                  {statusMessage}
+                </p>
+              )}
             </form>
           </div>
         </div>
