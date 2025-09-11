@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Send, Mail, Phone, MapPin, Github, Linkedin, Twitter } from 'lucide-react';
+import { Send, Mail, MapPin, Github, Linkedin } from 'lucide-react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import emailjs from '@emailjs/browser';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Contact: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -19,41 +21,55 @@ const Contact: React.FC = () => {
     const section = sectionRef.current;
     if (!section) return;
 
-    gsap.fromTo(section.querySelectorAll('.contact-item'),
-      { y: 80, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 80%'
-        }
+    // Animate all elements with the 'contact-item' class
+    gsap.fromTo(section.querySelectorAll('.contact-item'), {
+      y: 80,
+      opacity: 0
+    }, {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 80%', // Animation starts when the top of the section is 80% from the top of the viewport
       }
-    );
+    });
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formRef.current) return;
 
+    // --- CONFIGURATION NOTE ---
+    // For EmailJS to work, you MUST create a .env file in your project's root
+    // and add your credentials like this:
+    // REACT_APP_EMAILJS_SERVICE_ID=your_service_id
+    // REACT_APP_EMAILJS_TEMPLATE_ID=your_template_id
+    // REACT_APP_EMAILJS_PUBLIC_KEY=your_public_key
+    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      setStatusMessage('Email service is not configured correctly.');
+      console.error("EmailJS credentials are missing from .env file!");
+      setTimeout(() => setStatusMessage(''), 5000);
+      return;
+    }
+
     setIsSubmitting(true);
     setStatusMessage('');
 
-    emailjs.sendForm(
-      process.env.REACT_APP_EMAILJS_SERVICE_ID!,
-      process.env.REACT_APP_EMAILJS_TEMPLATE_ID!,
-      formRef.current,
-      process.env.REACT_APP_EMAILJS_PUBLIC_KEY!
-    )
+    emailjs.sendForm(serviceId, templateId, formRef.current, publicKey)
       .then((result) => {
-        console.log(result.text);
+        console.log('EmailJS Success:', result.text);
         setStatusMessage('Message sent successfully!');
         setFormData({ name: '', email: '', message: '' });
+        formRef.current?.reset();
       }, (error) => {
-        console.log(error.text);
+        console.error('EmailJS Error:', error.text);
         setStatusMessage('Failed to send message. Please try again.');
       })
       .finally(() => {
@@ -70,7 +86,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" ref={sectionRef} className="py-20 bg-gray-900/80 backdrop-blur-sm relative z-10">
+    <section id="contact" ref={sectionRef} className="py-20 bg-gray-900/80 backdrop-blur-sm relative z-10 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="contact-item text-4xl md:text-5xl font-bold mb-4 text-white">
@@ -78,7 +94,7 @@ const Contact: React.FC = () => {
           </h2>
           <div className="contact-item w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-6"></div>
           <p className="contact-item text-gray-300 text-lg max-w-2xl mx-auto">
-            I'm always open to discussing new opportunities, projects, or just having a chat about technology
+            I'm always open to discussing new opportunities, projects, or just having a chat about technology.
           </p>
         </div>
 
@@ -94,23 +110,11 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-gray-400 text-sm">Email</p>
-                  <a href="mailto:raghul@example.com" className="text-white hover:text-blue-400 transition-colors">
+                  <a href="mailto:jeevee.a77@gmail.com" className="text-white hover:text-blue-400 transition-colors">
                     jeevee.a77@gmail.com
                   </a>
                 </div>
               </div>
-
-              {/* <div className="flex items-center gap-4">
-                <div className="p-3 bg-green-500/20 rounded-full">
-                  <Phone className="w-6 h-6 text-green-400" />
-                </div>
-                <div>
-                  <p className="text-gray-400 text-sm">Phone</p>
-                  <a href="tel:+1234567890" className="text-white hover:text-green-400 transition-colors">
-                    +91 98765 43210
-                  </a>
-                </div>
-              </div> */}
 
               <div className="flex items-center gap-4">
                 <div className="p-3 bg-purple-500/20 rounded-full">
@@ -128,6 +132,7 @@ const Contact: React.FC = () => {
               <a
                 href="https://github.com/Mr-Jeevan"
                 target='_blank'
+                rel="noopener noreferrer"
                 className="p-3 bg-gray-800/70 rounded-full text-gray-300 hover:text-white hover:bg-gray-700 border border-gray-600 transition-all duration-300"
               >
                 <Github className="w-6 h-6" />
@@ -135,6 +140,7 @@ const Contact: React.FC = () => {
               <a
                 href="https://linkedin.com/in/mr-jeevan/"
                 target='_blank'
+                rel="noopener noreferrer"
                 className="p-3 bg-gray-800/70 rounded-full text-gray-300 hover:text-white hover:bg-gray-700 border border-gray-600 transition-all duration-300"
               >
                 <Linkedin className="w-6 h-6" />
@@ -208,7 +214,7 @@ const Contact: React.FC = () => {
                 )}
               </button>
               {statusMessage && (
-                <p className={`text-center mt-4 ${statusMessage.includes('Failed') ? 'text-red-400' : 'text-green-400'}`}>
+                <p className={`text-center mt-4 ${statusMessage.includes('Failed') || statusMessage.includes('not configured') ? 'text-red-400' : 'text-green-400'}`}>
                   {statusMessage}
                 </p>
               )}
@@ -219,7 +225,7 @@ const Contact: React.FC = () => {
         {/* Footer */}
         <div className="mt-20 pt-8 border-t border-gray-700 text-center">
           <p className="text-gray-400">
-            © 2024 Raghul Jeevanraj A. Built with React, GSAP, and lots of ☕
+            © 2025 Raghul Jeevanraj A. Built with React, GSAP, and lots of ☕
           </p>
         </div>
       </div>
@@ -228,3 +234,4 @@ const Contact: React.FC = () => {
 };
 
 export default Contact;
+
