@@ -13,7 +13,7 @@ const Projects: React.FC = () => {
   const projects = [
     {
       title: 'Student Details Management System',
-      description: 'A web-based student management system for MCA staff to organize, edit, and export second-year student records with ease',
+      description: 'A web-based student management system for MCA staff to organize, edit, and export student records with ease',
       tech: ['React', 'Node.js', 'MongoDB', 'JWT'],
       category: 'Web',
       image: sms_prj,
@@ -26,8 +26,8 @@ const Projects: React.FC = () => {
       tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
       category: 'Web',
       image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
-      github: '#',
-      demo: '#'
+      github: 'https://github.com/Mr-Jeevan/Thuni-kada.git',
+      demo: 'https://mr-jeevan.github.io/Thuni-kada/'
     },
     {
       title: 'Task Management API',
@@ -150,12 +150,14 @@ const Projects: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <a
+                    target='_blank'
                     href={project.github}
                     className="p-2 bg-black/60 rounded-full text-white hover:bg-black/80 transition-colors"
                   >
                     <Github className="w-4 h-4" />
                   </a>
                   <a
+                    target='_blank'
                     href={project.demo}
                     className="p-2 bg-black/60 rounded-full text-white hover:bg-black/80 transition-colors"
                   >
