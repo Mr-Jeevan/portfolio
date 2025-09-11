@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Send, Mail, Phone, MapPin, Github, Linkedin, Twitter } from 'lucide-react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+// import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const Contact: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -16,7 +16,7 @@ const Contact: React.FC = () => {
     const section = sectionRef.current;
     if (!section) return;
 
-    gsap.fromTo(section.querySelectorAll('.contact-item'), 
+    gsap.fromTo(section.querySelectorAll('.contact-item'),
       { y: 80, opacity: 0 },
       {
         y: 0,
@@ -35,10 +35,10 @@ const Contact: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 2000));
-    
+
     alert('Message sent successfully! I\'ll get back to you soon.');
     setFormData({ name: '', email: '', message: '' });
     setIsSubmitting(false);
@@ -68,7 +68,7 @@ const Contact: React.FC = () => {
           {/* Contact Info */}
           <div className="contact-item">
             <h3 className="text-2xl font-bold text-white mb-8">Let's Connect</h3>
-            
+
             <div className="space-y-6 mb-8">
               <div className="flex items-center gap-4">
                 <div className="p-3 bg-blue-500/20 rounded-full">
@@ -77,12 +77,12 @@ const Contact: React.FC = () => {
                 <div>
                   <p className="text-gray-400 text-sm">Email</p>
                   <a href="mailto:raghul@example.com" className="text-white hover:text-blue-400 transition-colors">
-                    raghul@example.com
+                    jeevee.a77@gmail.com
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
+              {/* <div className="flex items-center gap-4">
                 <div className="p-3 bg-green-500/20 rounded-full">
                   <Phone className="w-6 h-6 text-green-400" />
                 </div>
@@ -92,7 +92,7 @@ const Contact: React.FC = () => {
                     +91 98765 43210
                   </a>
                 </div>
-              </div>
+              </div> */}
 
               <div className="flex items-center gap-4">
                 <div className="p-3 bg-purple-500/20 rounded-full">
@@ -108,22 +108,18 @@ const Contact: React.FC = () => {
             {/* Social Links */}
             <div className="flex gap-4">
               <a
-                href="https://github.com"
+                href="https://github.com/Mr-Jeevan"
+                target='_blank'
                 className="p-3 bg-gray-800/70 rounded-full text-gray-300 hover:text-white hover:bg-gray-700 border border-gray-600 transition-all duration-300"
               >
                 <Github className="w-6 h-6" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://linkedin.com/in/mr-jeevan/"
+                target='_blank'
                 className="p-3 bg-gray-800/70 rounded-full text-gray-300 hover:text-white hover:bg-gray-700 border border-gray-600 transition-all duration-300"
               >
                 <Linkedin className="w-6 h-6" />
-              </a>
-              <a
-                href="https://twitter.com"
-                className="p-3 bg-gray-800/70 rounded-full text-gray-300 hover:text-white hover:bg-gray-700 border border-gray-600 transition-all duration-300"
-              >
-                <Twitter className="w-6 h-6" />
               </a>
             </div>
           </div>

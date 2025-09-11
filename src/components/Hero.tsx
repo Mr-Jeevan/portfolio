@@ -88,10 +88,11 @@ const Hero: React.FC = () => {
               </a>
               
               <a
-                href="#"
+                href="https://drive.google.com/drive/folders/1Cd0-nERzfz_GGj2ZUOv6qJB_pZ1DeYt6?usp=drive_link"
+                target='_blank'
                 className="group px-8 py-3 border-2 border-blue-500 text-blue-600 rounded-full font-medium hover:bg-blue-500 hover:text-white transition-all duration-300 flex items-center gap-2"
               >
-                Download Resume
+                View Resume
                 <Download className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
               </a>
             </div>
