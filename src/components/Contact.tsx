@@ -48,10 +48,9 @@ const Contact: React.FC = () => {
     // REACT_APP_EMAILJS_SERVICE_ID=your_service_id
     // REACT_APP_EMAILJS_TEMPLATE_ID=your_template_id
     // REACT_APP_EMAILJS_PUBLIC_KEY=your_public_key
-    const env = process.env;
-    const serviceId = env.REACT_APP_EMAILJS_SERVICE_ID;
-    const templateId = env.REACT_APP_EMAILJS_TEMPLATE_ID;
-    const publicKey = env.REACT_APP_EMAILJS_PUBLIC_KEY;
+    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
     if (!serviceId || !templateId || !publicKey) {
       setStatusMessage('Email service is not configured correctly.');

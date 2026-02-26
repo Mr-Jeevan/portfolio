@@ -45,7 +45,7 @@ const Tools: React.FC = () => {
     const section = sectionRef.current;
     if (!section) return;
 
-    gsap.fromTo(section.querySelector('.section-title'), 
+    gsap.fromTo(section.querySelector('.section-title'),
       { y: 50, opacity: 0 },
       {
         y: 0,
@@ -58,7 +58,7 @@ const Tools: React.FC = () => {
       }
     );
 
-    gsap.fromTo(section.querySelectorAll('.tool-card'), 
+    gsap.fromTo(section.querySelectorAll('.tool-card'),
       { y: 80, opacity: 0, scale: 0.8 },
       {
         y: 0,
@@ -76,14 +76,14 @@ const Tools: React.FC = () => {
   }, []);
 
   return (
-    <section id="tools" ref={sectionRef} className="py-20 bg-gray-800/80 backdrop-blur-sm relative z-10">
+    <section id="tools" ref={sectionRef} className="py-20 bg-dark-bg relative z-10">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="section-title text-4xl md:text-5xl font-bold mb-4 text-white">
+          <h2 className="section-title text-4xl md:text-5xl font-bold mb-4 text-text-white">
             Tools & Creative Work
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-6"></div>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <div className="w-20 h-1 bg-gradient-to-r from-primary-yellow to-hover-yellow mx-auto mb-6"></div>
+          <p className="text-text-muted text-lg max-w-2xl mx-auto">
             Beyond coding, I create stunning visuals and engaging content
           </p>
         </div>
@@ -92,22 +92,22 @@ const Tools: React.FC = () => {
           {toolCategories.map((category, index) => (
             <div
               key={category.title}
-              className={`tool-card ${category.bgColor} ${category.borderColor} border rounded-2xl p-6 hover:scale-105 transition-all duration-300 cursor-pointer group bg-gray-800/50 backdrop-blur-sm`}
+              className={`tool-card border rounded-2xl p-6 hover:scale-105 transition-all duration-300 cursor-pointer group bg-card-gray backdrop-blur-sm hover:shadow-lg hover:shadow-primary-yellow/10 border-border-gray hover:border-primary-yellow`}
             >
               <div className="text-center">
-                <div className={`inline-flex p-4 rounded-full ${category.bgColor} mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                  <category.icon className={`w-8 h-8 ${category.color}`} />
+                <div className={`inline-flex p-4 rounded-full bg-primary-yellow/20 mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                  <category.icon className={`w-8 h-8 text-primary-yellow`} />
                 </div>
-                
-                <h3 className="text-xl font-bold text-white mb-4">
+
+                <h3 className="text-xl font-bold text-text-white mb-4">
                   {category.title}
                 </h3>
-                
+
                 <div className="space-y-2">
                   {category.tools.map((tool) => (
                     <div
                       key={tool}
-                      className={`px-3 py-1 ${category.bgColor} rounded-full text-sm ${category.color} border ${category.borderColor}`}
+                      className={`px-3 py-1 bg-primary-yellow/20 rounded-full text-sm text-primary-yellow border border-primary-yellow/30`}
                     >
                       {tool}
                     </div>
@@ -119,14 +119,14 @@ const Tools: React.FC = () => {
         </div>
 
         <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-2xl p-8 border border-blue-400/20 bg-gray-800/50 backdrop-blur-sm">
-            <h3 className="text-2xl font-bold text-white mb-4">
+          <div className="bg-card-gray rounded-2xl p-8 border border-border-gray bg-gradient-to-r from-yellow-tint to-primary-yellow/10">
+            <h3 className="text-2xl font-bold text-text-white mb-4">
               Creative Philosophy
             </h3>
-            <p className="text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed">
-              I believe in the power of combining technical expertise with creative vision. 
-              Whether it's designing user interfaces, creating marketing materials, or 
-              editing videos, I approach every project with attention to detail and 
+            <p className="text-text-muted text-lg max-w-3xl mx-auto leading-relaxed">
+              I believe in the power of combining technical expertise with creative vision.
+              Whether it's designing user interfaces, creating marketing materials, or
+              editing videos, I approach every project with attention to detail and
               a passion for storytelling.
             </p>
           </div>

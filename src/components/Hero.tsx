@@ -1,14 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowDown, Download, ExternalLink } from 'lucide-react';
 import gsap from 'gsap';
-import profileImage from '../assets/p.jpg';
+import InteractiveNeuralSphere from './InteractiveNetwork';
 
 const Hero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     const tl = gsap.timeline({ delay: 1 });
@@ -20,10 +19,6 @@ const Hero: React.FC = () => {
       .fromTo(subtitleRef.current,
         { y: 50, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out' }, '-=0.3'
-      )
-      .fromTo(imageRef.current,
-        { scale: 0.8, opacity: 0, rotation: -10 },
-        { scale: 1, opacity: 1, rotation: 0, duration: 1, ease: 'back.out(1.7)' }, '-=0.5'
       )
       .fromTo(buttonsRef.current?.children,
         { y: 30, opacity: 0 },
@@ -39,15 +34,6 @@ const Hero: React.FC = () => {
       ease: 'power2.inOut'
     });
 
-    // Floating animation for profile image
-    gsap.to(imageRef.current, {
-      y: -15,
-      rotation: 5,
-      duration: 3,
-      repeat: -1,
-      yoyo: true,
-      ease: 'power2.inOut'
-    });
   }, []);
 
   return (
@@ -98,17 +84,10 @@ const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Profile Image */}
+          {/* Interactive 3D Network Visualization */}
           <div className="flex justify-center lg:justify-end">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary-yellow/30 to-primary-yellow/30 rounded-3xl blur-2xl transform rotate-6"></div>
-              <img
-                ref={imageRef}
-                src={profileImage}
-                alt="Raghul Jeevanraj A"
-                className="relative w-80 h-80 md:w-96 md:h-96 object-cover rounded-3xl shadow-2xl border-4 border-primary-yellow/20 backdrop-blur-sm"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/10 to-transparent rounded-3xl"></div>
+            <div className="relative w-80 h-80 md:w-96 md:h-96">
+              <InteractiveNeuralSphere />
             </div>
           </div>
         </div>
