@@ -95,10 +95,10 @@ const About: React.FC = () => {
                     <span className="text-text-muted">Primary Stack</span>
                     <span className="text-text-white font-medium">MERN</span>
                   </div>
-                  <div className="flex justify-between">
+                  {/* <div className="flex justify-between">
                     <span className="text-text-muted">Experience Level</span>
                     <span className="text-text-white font-medium">2+ Years</span>
-                  </div>
+                  </div> */}
                   <div className="flex justify-between">
                     <span className="text-text-muted">Location</span>
                     <span className="text-text-white font-medium">Available to Relocate</span>

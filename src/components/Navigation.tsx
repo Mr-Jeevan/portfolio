@@ -9,7 +9,7 @@ const MailLink: React.FC<{ scrolled: boolean }> = ({ scrolled }) => {
   const [copied, setCopied] = useState(false);
 
   // Mailto parameters with proper encoding
-  const emailAddress = 'jeevee.a77@gmail.com';
+  const emailAddress = 'jeevanraj.rj7@gmail.com';
   const subject = encodeURIComponent('Portfolio Inquiry - Let\'s Connect');
   const body = encodeURIComponent('Hello,\n\nI\'m interested in learning more about your work and would love to connect!\n\nBest regards,\n');
 
@@ -211,7 +211,7 @@ const Navigation: React.FC = () => {
               {/* Mobile mail link */}
               <div className="px-3 py-2">
                 <a
-                  href="mailto:jeevee.a77@gmail.com?subject=Portfolio Inquiry - Let's Connect&body=Hello,%0D%0A%0D%0AI'm interested in learning more about your work and would love to connect!%0D%0A%0D%0ABest regards,%0D%0A"
+                  href="mailto:jeevanraj.rj7@gmail.com?subject=Portfolio Inquiry - Let's Connect&body=Hello,%0D%0A%0D%0AI'm interested in learning more about your work and would love to connect!%0D%0A%0D%0ABest regards,%0D%0A"
                   className="flex items-center gap-2 text-text-white hover:text-primary-yellow transition-colors"
                 >
                   <Mail className="w-5 h-5" />

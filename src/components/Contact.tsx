@@ -110,8 +110,8 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-text-muted text-sm">Email</p>
-                  <a href="mailto:jeevee.a77@gmail.com" className="text-text-white hover:text-primary-yellow transition-colors">
-                    jeevee.a77@gmail.com
+                  <a href="mailto:jeevanraj.rj7@gmail.com" className="text-text-white hover:text-primary-yellow transition-colors">
+                    jeevanraj.rj7@gmail.com
                   </a>
                 </div>
               </div>
@@ -225,7 +225,7 @@ const Contact: React.FC = () => {
         {/* Footer */}
         <div className="mt-20 pt-8 border-t border-border-gray text-center">
           <p className="text-text-muted">
-            © 2025 Raghul Jeevanraj A. Built with React, GSAP, and lots of ☕
+            © 2026 Raghul Jeevanraj A. Built with React, GSAP, and lots of ☕
           </p>
         </div>
       </div>
