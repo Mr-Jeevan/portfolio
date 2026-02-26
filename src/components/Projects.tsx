@@ -3,9 +3,11 @@ import { ExternalLink, Github } from 'lucide-react';
 import gsap from 'gsap';
 // import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import sms_prj from '../assets/sms_prj.png';
-
-
+import sms from '../assets/sms.png';
+import ias from '../assets/ias.jpg';
+import lfrs from '../assets/lfrs.jpg';
+import pathfinder from '../assets/pathfinder.jpg';
+import rads from '../assets/rads.png';
 const Projects: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [filter, setFilter] = useState('All');
@@ -16,7 +18,7 @@ const Projects: React.FC = () => {
       description: 'Automated face recognition attendance system with real-time detection, confidence verification, and management dashboard for academic tracking.',
       tech: ['React', 'Node.js', 'MongoDB', 'face-api.js', 'JWT'],
       category: 'EdTech',
-      image: 'https://images.pexels.com/photos/3769714/pexels-photo-3769714.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: ias,
       github: 'https://github.com/Mr-Jeevan/inteli-attendance-sys-rjeevan',
       demo: 'https://ias-inteliattendancesys-1.onrender.com/'
     },
@@ -25,16 +27,16 @@ const Projects: React.FC = () => {
       description: 'AI-powered career & life mentor that generates personalized roadmaps with milestones and mentor tips based on user-defined life goals.',
       tech: ['React 19', 'Node.js', 'MongoDB', 'Hugging Face', 'JWT'],
       category: 'AI',
-      image: 'https://images.pexels.com/photos/730547/pexels-photo-730547.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: pathfinder,
       github: 'https://github.com/Mr-Jeevan/pathfinder-public',
       demo: 'https://pathfinder-demo.onrender.com'
     },
     {
-      title: 'Student Details Management System',
+      title: 'Student Details Management System', 
       description: 'MCA student record management platform with CRUD operations, secure authentication, and Excel export functionality.',
       tech: ['React', 'Node.js', 'MongoDB', 'Bootstrap 5', 'JWT'],
       category: 'Management',
-      image: sms_prj,
+      image: sms,
       github: 'https://github.com/Mr-Jeevan/McaSms.git',
       demo: 'https://mcasms-frontend.onrender.com/'
     },
@@ -43,7 +45,7 @@ const Projects: React.FC = () => {
       description: 'Real-time community platform for reporting and tracking lost/found items with integrated messaging and status tracking.',
       tech: ['React 19', 'Python FastAPI', 'MongoDB', 'Socket.io'],
       category: 'Community',
-      image: 'https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: lfrs,
       github: 'https://github.com/Mr-Jeevan/hybrid-lfrs',
       demo: 'https://lfrs-iaue.onrender.com'
     },
@@ -52,7 +54,7 @@ const Projects: React.FC = () => {
       description: 'Smart road-monitoring platform detecting potholes/speed breakers via vibration analysis and GPS tracking with geospatial visualization.',
       tech: ['React', 'Node.js', 'MongoDB', 'Leaflet', 'Turf.js'],
       category: 'IoT',
-      image: 'https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: rads,
       github: 'https://github.com/Mr-Jeevan/RADS.git',
       demo: 'https://rads-jqhp.onrender.com'
     },
