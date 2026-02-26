@@ -69,7 +69,7 @@ const Projects: React.FC = () => {
     },
   ];
 
-  const categories = ['All', 'Web', 'EdTech', 'AI', 'Community', 'Management', 'E-commerce', 'IoT'];
+  const categories = ['All', 'EdTech', 'AI', 'Community', 'Management', 'E-commerce', 'IoT'];
 
   const filteredProjects = filter === 'All'
     ? projects

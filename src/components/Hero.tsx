@@ -74,7 +74,7 @@ const Hero: React.FC = () => {
               </a>
 
               <a
-                href="https://drive.google.com/drive/folders/1Cd0-nERzfz_GGj2ZUOv6qJB_pZ1DeYt6?usp=drive_link"
+                href="https://drive.google.com/drive/folders/1SIgAL7M0faPO62keJoo3wfjm6XlxWK47?usp=sharing"
                 target='_blank'
                 className="group px-8 py-3 border-2 border-border-gray text-text-white rounded-full font-medium hover:bg-yellow-tint hover:border-primary-yellow transition-all duration-300 flex items-center gap-2"
               >

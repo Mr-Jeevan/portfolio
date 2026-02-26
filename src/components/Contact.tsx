@@ -69,6 +69,7 @@ const Contact: React.FC = () => {
                     >
                       jeevanraj.rj7@gmail.com
                     </a>
+
                     <button
                       onClick={handleCopyEmail}
                       className="p-1 hover:bg-card-gray rounded transition-colors"
@@ -116,13 +117,7 @@ const Contact: React.FC = () => {
               >
                 <Linkedin className="w-6 h-6" />
               </a>
-              <a
-                href="mailto:jeevanraj.rj7@gmail.com"
-                className="p-3 bg-card-gray rounded-full text-text-white hover:text-primary-yellow hover:bg-border-gray border border-border-gray transition-all duration-300"
-                title="Send Email"
-              >
-                <Mail className="w-6 h-6" />
-              </a>
+             
             </div>
           </div>
 
@@ -154,6 +149,7 @@ const Contact: React.FC = () => {
                   >
                     jeevanraj.rj7@gmail.com
                   </a>
+
                 </p>
               </div>
             </div>

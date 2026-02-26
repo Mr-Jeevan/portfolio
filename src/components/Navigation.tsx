@@ -85,7 +85,7 @@ const MailLink: React.FC<{ scrolled: boolean }> = ({ scrolled }) => {
       {showFallback && (
         <div className="absolute top-full right-0 mt-2 p-3 bg-card-gray border border-border-gray rounded-lg shadow-lg z-50 min-w-[200px]">
           <div className="text-text-white text-sm mb-2">
-            <p className="font-medium">Email Client Not Found</p>
+            <p className="font-medium">Email Client</p>
             <p className="text-text-muted text-xs">Choose an option below:</p>
           </div>
 
@@ -175,10 +175,10 @@ const Navigation: React.FC = () => {
 
           {/* Social Links */}
           <div className="hidden md:flex items-center space-x-4">
-            <a href="https://github.com/Mr-Jeevan" className={`nav-item transition-colors ${scrolled ? 'text-text-white hover:text-primary-yellow' : 'text-text-white hover:text-primary-yellow'}`} aria-label="GitHub profile">
+            <a href="https://github.com/Mr-Jeevan" target="_blank" className={`nav-item transition-colors ${scrolled ? 'text-text-white hover:text-primary-yellow' : 'text-text-white hover:text-primary-yellow'}`} aria-label="GitHub profile">
               <Github className="w-5 h-5" />
             </a>
-            <a href="https://linkedin.com/in/mr-jeevan/" className={`nav-item transition-colors ${scrolled ? 'text-text-white hover:text-primary-yellow' : 'text-text-white hover:text-primary-yellow'}`} aria-label="LinkedIn profile">
+            <a href="https://linkedin.com/in/mr-jeevan/" target="_blank" className={`nav-item transition-colors ${scrolled ? 'text-text-white hover:text-primary-yellow' : 'text-text-white hover:text-primary-yellow'}`} aria-label="LinkedIn profile">
               <Linkedin className="w-5 h-5" />
             </a>
             <MailLink scrolled={scrolled} />
@@ -212,7 +212,7 @@ const Navigation: React.FC = () => {
               <div className="px-3 py-2">
                 <a
                   href="mailto:jeevanraj.rj7@gmail.com?subject=Portfolio Inquiry - Let's Connect&body=Hello,%0D%0A%0D%0AI'm interested in learning more about your work and would love to connect!%0D%0A%0D%0ABest regards,%0D%0A"
-                  className="flex items-center gap-2 text-text-white hover:text-primary-yellow transition-colors"
+                  target="_blank" className="flex items-center gap-2 text-text-white hover:text-primary-yellow transition-colors"
                 >
                   <Mail className="w-5 h-5" />
                   <span>Email Me</span>
