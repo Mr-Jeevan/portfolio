@@ -17,10 +17,10 @@ function App() {
     const lenis = () => {
       window.scrollTo({ behavior: 'smooth' });
     };
-    
+
     // Initialize scroll animations
-    gsap.fromTo('body', 
-      { opacity: 0 }, 
+    gsap.fromTo('body',
+      { opacity: 0 },
       { opacity: 1, duration: 1, ease: 'power2.out' }
     );
 
@@ -30,15 +30,15 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white overflow-x-hidden relative">
+    <div className="bg-dark-bg text-text-white overflow-x-hidden relative">
       {/* Liquid Animation Canvas */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <svg className="w-full h-full" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
           <defs>
             <linearGradient id="liquidGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="rgba(59, 130, 246, 0.1)" />
-              <stop offset="50%" stopColor="rgba(139, 92, 246, 0.15)" />
-              <stop offset="100%" stopColor="rgba(16, 185, 129, 0.1)" />
+              <stop offset="0%" stopColor="rgba(247, 181, 0, 0.1)" />
+              <stop offset="50%" stopColor="rgba(226, 162, 0, 0.15)" />
+              <stop offset="100%" stopColor="rgba(28, 29, 37, 0.1)" />
             </linearGradient>
           </defs>
           <path
@@ -48,7 +48,7 @@ function App() {
           />
         </svg>
       </div>
-      
+
       <Navigation />
       <Hero />
       <About />

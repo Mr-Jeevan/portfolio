@@ -48,9 +48,10 @@ const Contact: React.FC = () => {
     // REACT_APP_EMAILJS_SERVICE_ID=your_service_id
     // REACT_APP_EMAILJS_TEMPLATE_ID=your_template_id
     // REACT_APP_EMAILJS_PUBLIC_KEY=your_public_key
-    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+    const env = process.env;
+    const serviceId = env.REACT_APP_EMAILJS_SERVICE_ID;
+    const templateId = env.REACT_APP_EMAILJS_TEMPLATE_ID;
+    const publicKey = env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
     if (!serviceId || !templateId || !publicKey) {
       setStatusMessage('Email service is not configured correctly.');
@@ -86,14 +87,14 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" ref={sectionRef} className="py-20 bg-gray-900/80 backdrop-blur-sm relative z-10 overflow-hidden">
+    <section id="contact" ref={sectionRef} className="py-20 bg-dark-bg relative z-10 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="contact-item text-4xl md:text-5xl font-bold mb-4 text-white">
+          <h2 className="contact-item text-4xl md:text-5xl font-bold mb-4 text-text-white">
             Get In Touch
           </h2>
-          <div className="contact-item w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-6"></div>
-          <p className="contact-item text-gray-300 text-lg max-w-2xl mx-auto">
+          <div className="contact-item w-20 h-1 bg-gradient-to-r from-primary-yellow to-hover-yellow mx-auto mb-6"></div>
+          <p className="contact-item text-text-muted text-lg max-w-2xl mx-auto">
             I'm always open to discussing new opportunities, projects, or just having a chat about technology.
           </p>
         </div>
@@ -101,28 +102,28 @@ const Contact: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Info */}
           <div className="contact-item">
-            <h3 className="text-2xl font-bold text-white mb-8">Let's Connect</h3>
+            <h3 className="text-2xl font-bold text-text-white mb-8">Let's Connect</h3>
 
             <div className="space-y-6 mb-8">
               <div className="flex items-center gap-4">
-                <div className="p-3 bg-blue-500/20 rounded-full">
-                  <Mail className="w-6 h-6 text-blue-400" />
+                <div className="p-3 bg-primary-yellow/20 rounded-full">
+                  <Mail className="w-6 h-6 text-primary-yellow" />
                 </div>
                 <div>
-                  <p className="text-gray-400 text-sm">Email</p>
-                  <a href="mailto:jeevee.a77@gmail.com" className="text-white hover:text-blue-400 transition-colors">
+                  <p className="text-text-muted text-sm">Email</p>
+                  <a href="mailto:jeevee.a77@gmail.com" className="text-text-white hover:text-primary-yellow transition-colors">
                     jeevee.a77@gmail.com
                   </a>
                 </div>
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="p-3 bg-purple-500/20 rounded-full">
-                  <MapPin className="w-6 h-6 text-purple-400" />
+                <div className="p-3 bg-primary-yellow/20 rounded-full">
+                  <MapPin className="w-6 h-6 text-primary-yellow" />
                 </div>
                 <div>
-                  <p className="text-gray-400 text-sm">Location</p>
-                  <p className="text-white">Available to Relocate</p>
+                  <p className="text-text-muted text-sm">Location</p>
+                  <p className="text-text-white">Available to Relocate</p>
                 </div>
               </div>
             </div>
@@ -133,7 +134,7 @@ const Contact: React.FC = () => {
                 href="https://github.com/Mr-Jeevan"
                 target='_blank'
                 rel="noopener noreferrer"
-                className="p-3 bg-gray-800/70 rounded-full text-gray-300 hover:text-white hover:bg-gray-700 border border-gray-600 transition-all duration-300"
+                className="p-3 bg-card-gray rounded-full text-text-white hover:text-primary-yellow hover:bg-border-gray border border-border-gray transition-all duration-300"
               >
                 <Github className="w-6 h-6" />
               </a>
@@ -141,7 +142,7 @@ const Contact: React.FC = () => {
                 href="https://linkedin.com/in/mr-jeevan/"
                 target='_blank'
                 rel="noopener noreferrer"
-                className="p-3 bg-gray-800/70 rounded-full text-gray-300 hover:text-white hover:bg-gray-700 border border-gray-600 transition-all duration-300"
+                className="p-3 bg-card-gray rounded-full text-text-white hover:text-primary-yellow hover:bg-border-gray border border-border-gray transition-all duration-300"
               >
                 <Linkedin className="w-6 h-6" />
               </a>
@@ -152,7 +153,7 @@ const Contact: React.FC = () => {
           <div className="contact-item">
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                <label htmlFor="name" className="block text-sm font-medium text-text-muted mb-2">
                   Your Name
                 </label>
                 <input
@@ -162,13 +163,13 @@ const Contact: React.FC = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-800/70 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors backdrop-blur-sm"
+                  className="w-full px-4 py-3 bg-card-gray border border-border-gray rounded-lg text-text-white placeholder-text-muted focus:outline-none focus:border-primary-yellow transition-colors backdrop-blur-sm"
                   placeholder="Enter your name"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-text-muted mb-2">
                   Your Email
                 </label>
                 <input
@@ -178,13 +179,13 @@ const Contact: React.FC = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-800/70 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors backdrop-blur-sm"
+                  className="w-full px-4 py-3 bg-card-gray border border-border-gray rounded-lg text-text-white placeholder-text-muted focus:outline-none focus:border-primary-yellow transition-colors backdrop-blur-sm"
                   placeholder="Enter your email"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-text-muted mb-2">
                   Your Message
                 </label>
                 <textarea
@@ -194,7 +195,7 @@ const Contact: React.FC = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 bg-gray-800/70 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors resize-none backdrop-blur-sm"
+                  className="w-full px-4 py-3 bg-card-gray border border-border-gray rounded-lg text-text-white placeholder-text-muted focus:outline-none focus:border-primary-yellow transition-colors resize-none backdrop-blur-sm"
                   placeholder="Enter your message"
                 />
               </div>
@@ -202,10 +203,10 @@ const Contact: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="group w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 px-6 rounded-lg font-medium hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70"
+                className="group w-full bg-primary-yellow text-dark-bg py-3 px-6 rounded-lg font-medium hover:bg-hover-yellow hover:shadow-lg hover:shadow-primary-yellow/25 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70"
               >
                 {isSubmitting ? (
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-dark-bg"></div>
                 ) : (
                   <>
                     Send Message
@@ -223,8 +224,8 @@ const Contact: React.FC = () => {
         </div>
 
         {/* Footer */}
-        <div className="mt-20 pt-8 border-t border-gray-700 text-center">
-          <p className="text-gray-400">
+        <div className="mt-20 pt-8 border-t border-border-gray text-center">
+          <p className="text-text-muted">
             © 2025 Raghul Jeevanraj A. Built with React, GSAP, and lots of ☕
           </p>
         </div>

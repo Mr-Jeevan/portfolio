@@ -47,7 +47,7 @@ const TechStack: React.FC = () => {
     const section = sectionRef.current;
     if (!section) return;
 
-    gsap.fromTo(section.querySelector('.section-title'), 
+    gsap.fromTo(section.querySelector('.section-title'),
       { y: 50, opacity: 0 },
       {
         y: 0,
@@ -60,7 +60,7 @@ const TechStack: React.FC = () => {
       }
     );
 
-    gsap.fromTo(section.querySelectorAll('.tech-category'), 
+    gsap.fromTo(section.querySelectorAll('.tech-category'),
       { y: 80, opacity: 0 },
       {
         y: 0,
@@ -75,7 +75,7 @@ const TechStack: React.FC = () => {
       }
     );
 
-    gsap.fromTo(section.querySelectorAll('.tech-item'), 
+    gsap.fromTo(section.querySelectorAll('.tech-item'),
       { scale: 0, opacity: 0 },
       {
         scale: 1,
@@ -92,14 +92,14 @@ const TechStack: React.FC = () => {
   }, []);
 
   return (
-    <section id="tech" ref={sectionRef} className="py-20 bg-gray-800/80 backdrop-blur-sm relative z-10">
+    <section id="tech" ref={sectionRef} className="py-20 bg-dark-bg relative z-10">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="section-title text-4xl md:text-5xl font-bold mb-4 text-white">
+          <h2 className="section-title text-4xl md:text-5xl font-bold mb-4 text-text-white">
             Tech Stack
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-6"></div>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <div className="w-20 h-1 bg-gradient-to-r from-primary-yellow to-hover-yellow mx-auto mb-6"></div>
+          <p className="text-text-muted text-lg max-w-2xl mx-auto">
             Technologies and tools I use to bring ideas to life
           </p>
         </div>
@@ -107,17 +107,17 @@ const TechStack: React.FC = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {technologies.map((category, categoryIndex) => (
             <div key={category.category} className="tech-category">
-              <h3 className="text-xl font-semibold mb-6 text-center text-white">
+              <h3 className="text-xl font-semibold mb-6 text-center text-text-white">
                 {category.category}
               </h3>
               <div className="space-y-4">
                 {category.items.map((tech, techIndex) => (
                   <div
                     key={tech.name}
-                    className={`tech-item p-4 rounded-xl ${tech.bg} border border-gray-600 hover:border-gray-500 transition-all duration-300 cursor-pointer group hover:scale-105 bg-gray-800/50 backdrop-blur-sm`}
+                    className={`tech-item p-4 rounded-xl border border-border-gray hover:border-primary-yellow transition-all duration-300 cursor-pointer group hover:scale-105 bg-card-gray backdrop-blur-sm hover:shadow-lg hover:shadow-primary-yellow/10`}
                   >
                     <div className="text-center">
-                      <div className={`text-lg font-medium ${tech.color} group-hover:scale-110 transition-transform duration-300`}>
+                      <div className={`text-lg font-medium text-primary-yellow group-hover:scale-110 transition-transform duration-300`}>
                         {tech.name}
                       </div>
                     </div>

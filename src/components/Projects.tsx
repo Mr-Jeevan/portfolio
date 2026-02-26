@@ -107,14 +107,14 @@ const Projects: React.FC = () => {
   }, [filteredProjects]);
 
   return (
-    <section id="projects" ref={sectionRef} className="py-20 bg-gray-900/80 backdrop-blur-sm relative z-10">
+    <section id="projects" ref={sectionRef} className="py-20 bg-dark-bg relative z-10">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="section-title text-4xl md:text-5xl font-bold mb-4 text-white">
+          <h2 className="section-title text-4xl md:text-5xl font-bold mb-4 text-text-white">
             Projects
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-6"></div>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-8">
+          <div className="w-20 h-1 bg-gradient-to-r from-primary-yellow to-hover-yellow mx-auto mb-6"></div>
+          <p className="text-text-muted text-lg max-w-2xl mx-auto mb-8">
             A collection of projects showcasing my skills and creativity
           </p>
 
@@ -125,8 +125,8 @@ const Projects: React.FC = () => {
                 key={category}
                 onClick={() => setFilter(category)}
                 className={`px-6 py-2 rounded-full transition-all duration-300 ${filter === category
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-gray-800/70 text-gray-300 hover:bg-gray-700 border border-gray-600'
+                  ? 'bg-primary-yellow text-dark-bg'
+                  : 'bg-card-gray text-text-muted hover:bg-border-gray border border-border-gray'
                   }`}
               >
                 {category}
@@ -139,7 +139,7 @@ const Projects: React.FC = () => {
           {filteredProjects.map((project, index) => (
             <div
               key={project.title}
-              className="project-card group bg-gray-800/80 backdrop-blur-sm rounded-2xl overflow-hidden hover:transform hover:scale-105 transition-all duration-500 hover:shadow-2xl border border-gray-600"
+              className="project-card group bg-card-gray rounded-2xl overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-primary-yellow/20 border border-border-gray hover:border-primary-yellow"
             >
               <div className="relative overflow-hidden">
                 <img
@@ -147,19 +147,19 @@ const Projects: React.FC = () => {
                   alt={project.title}
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <a
                     target='_blank'
                     href={project.github}
-                    className="p-2 bg-black/60 rounded-full text-white hover:bg-black/80 transition-colors"
+                    className="p-2 bg-dark-bg/60 rounded-full text-primary-yellow hover:bg-dark-bg/80 transition-colors border border-border-gray"
                   >
                     <Github className="w-4 h-4" />
                   </a>
                   <a
                     target='_blank'
                     href={project.demo}
-                    className="p-2 bg-black/60 rounded-full text-white hover:bg-black/80 transition-colors"
+                    className="p-2 bg-dark-bg/60 rounded-full text-primary-yellow hover:bg-dark-bg/80 transition-colors border border-border-gray"
                   >
                     <ExternalLink className="w-4 h-4" />
                   </a>
@@ -167,17 +167,17 @@ const Projects: React.FC = () => {
               </div>
 
               <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                <h3 className="text-xl font-bold text-text-white mb-2 group-hover:text-primary-yellow transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-gray-300 mb-4 text-sm leading-relaxed">
+                <p className="text-text-muted mb-4 text-sm leading-relaxed">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs"
+                      className="px-3 py-1 bg-primary-yellow/20 text-primary-yellow rounded-full text-xs border border-primary-yellow/30"
                     >
                       {tech}
                     </span>
