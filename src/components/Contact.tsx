@@ -1,21 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Send, Mail, MapPin, Github, Linkedin } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
+import { Mail, MapPin, Github, Linkedin, Copy, Check } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import emailjs from '@emailjs/browser';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Contact: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const formRef = useRef<HTMLFormElement>(null);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [statusMessage, setStatusMessage] = useState('');
+  const [copied, setCopied] = React.useState(false);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -33,56 +25,15 @@ const Contact: React.FC = () => {
       ease: 'power3.out',
       scrollTrigger: {
         trigger: section,
-        start: 'top 80%', // Animation starts when the top of the section is 80% from the top of the viewport
+        start: 'top 80%',
       }
     });
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formRef.current) return;
-
-    // --- CONFIGURATION NOTE ---
-    // For EmailJS to work, you MUST create a .env file in your project's root
-    // and add your credentials like this:
-    // REACT_APP_EMAILJS_SERVICE_ID=your_service_id
-    // REACT_APP_EMAILJS_TEMPLATE_ID=your_template_id
-    // REACT_APP_EMAILJS_PUBLIC_KEY=your_public_key
-    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
-
-    if (!serviceId || !templateId || !publicKey) {
-      setStatusMessage('Email service is not configured correctly.');
-      console.error("EmailJS credentials are missing from .env file!");
-      setTimeout(() => setStatusMessage(''), 5000);
-      return;
-    }
-
-    setIsSubmitting(true);
-    setStatusMessage('');
-
-    emailjs.sendForm(serviceId, templateId, formRef.current, publicKey)
-      .then((result) => {
-        console.log('EmailJS Success:', result.text);
-        setStatusMessage('Message sent successfully!');
-        setFormData({ name: '', email: '', message: '' });
-        formRef.current?.reset();
-      }, (error) => {
-        console.error('EmailJS Error:', error.text);
-        setStatusMessage('Failed to send message. Please try again.');
-      })
-      .finally(() => {
-        setIsSubmitting(false);
-        setTimeout(() => setStatusMessage(''), 5000); // Clear message after 5 seconds
-      });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('jeevanraj.rj7@gmail.com');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -99,23 +50,41 @@ const Contact: React.FC = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
+          {/* Contact Info - Left Column */}
           <div className="contact-item">
             <h3 className="text-2xl font-bold text-text-white mb-8">Let's Connect</h3>
 
             <div className="space-y-6 mb-8">
+              {/* Email */}
               <div className="flex items-center gap-4">
                 <div className="p-3 bg-primary-yellow/20 rounded-full">
                   <Mail className="w-6 h-6 text-primary-yellow" />
                 </div>
-                <div>
+                <div className="flex-1">
                   <p className="text-text-muted text-sm">Email</p>
-                  <a href="mailto:jeevanraj.rj7@gmail.com" className="text-text-white hover:text-primary-yellow transition-colors">
-                    jeevanraj.rj7@gmail.com
-                  </a>
+                  <div className="flex items-center gap-2">
+                    <a
+                      href="mailto:jeevanraj.rj7@gmail.com"
+                      className="text-text-white hover:text-primary-yellow transition-colors"
+                    >
+                      jeevanraj.rj7@gmail.com
+                    </a>
+                    <button
+                      onClick={handleCopyEmail}
+                      className="p-1 hover:bg-card-gray rounded transition-colors"
+                      title="Copy email"
+                    >
+                      {copied ? (
+                        <Check className="w-4 h-4 text-green-400" />
+                      ) : (
+                        <Copy className="w-4 h-4 text-text-muted hover:text-primary-yellow" />
+                      )}
+                    </button>
+                  </div>
                 </div>
               </div>
 
+              {/* Location */}
               <div className="flex items-center gap-4">
                 <div className="p-3 bg-primary-yellow/20 rounded-full">
                   <MapPin className="w-6 h-6 text-primary-yellow" />
@@ -131,94 +100,63 @@ const Contact: React.FC = () => {
             <div className="flex gap-4">
               <a
                 href="https://github.com/Mr-Jeevan"
-                target='_blank'
+                target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-card-gray rounded-full text-text-white hover:text-primary-yellow hover:bg-border-gray border border-border-gray transition-all duration-300"
+                title="GitHub"
               >
                 <Github className="w-6 h-6" />
               </a>
               <a
                 href="https://linkedin.com/in/mr-jeevan/"
-                target='_blank'
+                target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-card-gray rounded-full text-text-white hover:text-primary-yellow hover:bg-border-gray border border-border-gray transition-all duration-300"
+                title="LinkedIn"
               >
                 <Linkedin className="w-6 h-6" />
+              </a>
+              <a
+                href="mailto:jeevanraj.rj7@gmail.com"
+                className="p-3 bg-card-gray rounded-full text-text-white hover:text-primary-yellow hover:bg-border-gray border border-border-gray transition-all duration-300"
+                title="Send Email"
+              >
+                <Mail className="w-6 h-6" />
               </a>
             </div>
           </div>
 
-          {/* Contact Form */}
+          {/* Contact Message - Right Column */}
           <div className="contact-item">
-            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-text-muted mb-2">
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-card-gray border border-border-gray rounded-lg text-text-white placeholder-text-muted focus:outline-none focus:border-primary-yellow transition-colors backdrop-blur-sm"
-                  placeholder="Enter your name"
-                />
+            <div className="bg-card-gray border border-border-gray rounded-lg p-8 h-full flex flex-col justify-center">
+              <h3 className="text-2xl font-bold text-text-white mb-4">Ready to Work Together?</h3>
+              <p className="text-text-muted mb-6 leading-relaxed">
+                I'm actively seeking opportunities to contribute to meaningful projects and collaborate with talented teams. Whether you have a project in mind, want to discuss tech, or just want to connect—I'd love to hear from you!
+              </p>
+
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <span className="text-primary-yellow font-bold text-lg mt-1">✓</span>
+                  <p className="text-text-white">Full-stack MERN Development</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-primary-yellow font-bold text-lg mt-1">✓</span>
+                  <p className="text-text-white">Available to relocate and open to remote opportunities</p>
+                </div>
               </div>
 
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-text-muted mb-2">
-                  Your Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-card-gray border border-border-gray rounded-lg text-text-white placeholder-text-muted focus:outline-none focus:border-primary-yellow transition-colors backdrop-blur-sm"
-                  placeholder="Enter your email"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-text-muted mb-2">
-                  Your Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  className="w-full px-4 py-3 bg-card-gray border border-border-gray rounded-lg text-text-white placeholder-text-muted focus:outline-none focus:border-primary-yellow transition-colors resize-none backdrop-blur-sm"
-                  placeholder="Enter your message"
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="group w-full bg-primary-yellow text-dark-bg py-3 px-6 rounded-lg font-medium hover:bg-hover-yellow hover:shadow-lg hover:shadow-primary-yellow/25 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70"
-              >
-                {isSubmitting ? (
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-dark-bg"></div>
-                ) : (
-                  <>
-                    Send Message
-                    <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </>
-                )}
-              </button>
-              {statusMessage && (
-                <p className={`text-center mt-4 ${statusMessage.includes('Failed') || statusMessage.includes('not configured') ? 'text-red-400' : 'text-green-400'}`}>
-                  {statusMessage}
+              <div className="mt-8 pt-8 border-t border-border-gray">
+                <p className="text-text-muted text-sm">
+                  <strong>Preferred Contact Method:</strong> Email me directly at{' '}
+                  <a
+                    href="mailto:jeevanraj.rj7@gmail.com"
+                    className="text-primary-yellow hover:text-hover-yellow transition-colors"
+                  >
+                    jeevanraj.rj7@gmail.com
+                  </a>
                 </p>
-              )}
-            </form>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -234,4 +172,3 @@ const Contact: React.FC = () => {
 };
 
 export default Contact;
-

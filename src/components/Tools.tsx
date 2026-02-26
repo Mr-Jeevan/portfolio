@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Palette, Video, Image, Zap } from 'lucide-react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+// import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const Tools: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -24,21 +24,21 @@ const Tools: React.FC = () => {
       borderColor: 'border-purple-400/20'
     },
     {
-      icon: Image,
-      title: 'Graphics',
-      tools: ['Photoshop', 'GIMP'],
-      color: 'text-blue-400',
-      bgColor: 'bg-blue-400/10',
-      borderColor: 'border-blue-400/20'
-    },
-    {
       icon: Zap,
       title: 'Development',
       tools: ['Postman', 'Firebase', 'MongoDB Atlas'],
       color: 'text-green-400',
       bgColor: 'bg-green-400/10',
       borderColor: 'border-green-400/20'
-    }
+    },
+    {
+      icon: Image,
+      title: 'Graphics',
+      tools: ['Photoshop'],
+      color: 'text-blue-400',
+      bgColor: 'bg-blue-400/10',
+      borderColor: 'border-blue-400/20'
+    },
   ];
 
   useEffect(() => {
