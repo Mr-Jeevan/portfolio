@@ -19,10 +19,9 @@ const TechStack: React.FC = () => {
     {
       category: 'Backend',
       items: [
+        { name: 'Java', color: 'text-red-400', bg: 'bg-red-400/10' },
         { name: 'Node.js', color: 'text-green-400', bg: 'bg-green-400/10' },
-        { name: 'Express.js', color: 'text-gray-300', bg: 'bg-gray-300/10' },
-        { name: 'Python', color: 'text-blue-400', bg: 'bg-blue-400/10' },
-        { name: 'Java', color: 'text-red-400', bg: 'bg-red-400/10' }
+        { name: 'Express.js', color: 'text-gray-300', bg: 'bg-gray-300/10' }
       ]
     },
     {
@@ -30,17 +29,17 @@ const TechStack: React.FC = () => {
       items: [
         { name: 'MongoDB', color: 'text-green-500', bg: 'bg-green-500/10' },
         { name: 'SQL', color: 'text-blue-400', bg: 'bg-blue-400/10' },
-        { name: 'MongoDB Atlas', color: 'text-green-400', bg: 'bg-green-400/10' },
-        { name: 'Firebase', color: 'text-yellow-500', bg: 'bg-yellow-500/10' }
+        { name: 'MongoDB Atlas', color: 'text-green-400', bg: 'bg-green-400/10' }
       ]
     },
     {
       category: 'Tools & Others',
       items: [
+        { name: 'Eclipse', color: 'text-orange-400', bg: 'bg-orange-400/10' },
+        { name: 'VS Code', color: 'text-blue-400', bg: 'bg-blue-400/10' },
         { name: 'Git & GitHub', color: 'text-purple-400', bg: 'bg-purple-400/10' },
         { name: 'Postman', color: 'text-orange-400', bg: 'bg-orange-400/10' },
-        { name: 'Oracle DB', color: 'text-orange-400', bg: 'bg-orange-400/10' },
-        { name: 'VS Code', color: 'text-blue-400', bg: 'bg-blue-400/10' }
+        { name: 'Oracle DB', color: 'text-orange-400', bg: 'bg-orange-400/10' }
       ]
     }
   ];

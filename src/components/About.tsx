@@ -46,9 +46,9 @@ const About: React.FC = () => {
                 <h3 className="text-xl font-semibold text-text-white">Education</h3>
               </div>
               <p className="text-text-muted leading-relaxed">
-                Final-year MCA student with a passion for technology and innovation.
-                Currently mastering advanced concepts in software development and
-                system design while building real-world applications.
+                Recent MCA graduate and MERN stack developer with a passion for technology and innovation. 
+                Currently expanding my expertise into Java Full-Stack development and mastering advanced system 
+                design to build scalable, real-world applications.
               </p>
             </div>
 
@@ -85,7 +85,7 @@ const About: React.FC = () => {
                 <div className="space-y-4">
                   <div className="flex justify-between">
                     <span className="text-text-muted">Degree</span>
-                    <span className="text-text-white font-medium">MCA (Final Year)</span>
+                    <span className="text-text-white font-medium">MCA</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-text-muted">Specialization</span>
